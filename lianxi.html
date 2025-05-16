@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun Play Server - 联系我们</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpg') center center no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+   .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+   .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+   .logo-img {
+      width: 150px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+   .official-site {
+      color: white;
+      text-decoration: none;
+      border: 1px solid white;
+      padding: 5px 10px;
+    }
+
+   .contact-us {
+      color: white;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+   .contact-us h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+   .team-members {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+
+   .member {
+      text-align: center;
+    }
+
+   .member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+   .member h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+   .member p {
+      line-height: 1.6;
+    }
+
+    /* 以下是优化手机端显示的样式 */
+    @media (max-width: 768px) {
+      .team-members {
+            flex-direction: column;
+            align-items: center;
+        }
+      .member {
+            margin-bottom: 30px;
+            width: 80%;
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo-container">
+      <img src="logo.png" alt="网站logo" class="logo-img">
+      <a href="index.html" class="official-site">官方首页</a>
+    </div>
+  </div>
+  <section class="contact-us">
+    <h2>联系我们</h2>
+    <div class="team-members">
+      <div class="member">
+        <img src="user3.jpg" alt="服主头像">
+        <h3>服主 - [Mishei米神]</h3>
+        <p>作为Fun Play Server的服主，Mishei米神对游戏服务器的运营有着极大的热情和丰富的经验。他精心策划每一次服务器更新，致力于为玩家打造一个充满乐趣、公平公正的游戏环境。无论是游戏玩法的创新，还是服务器性能的优化，他都亲力亲为，力求给玩家带来极致的游戏体验。</p>
+      </div>
+      <div class="member">
+        <img src="user1.jpg" alt="Nahidadog">
+        <h3>管理员 - [Nahidadog]</h3>
+        <p>Nahidadog是Fun Play Server的资深管理员，主要负责服务器的日常维护和玩家问题处理。他时刻关注着服务器的运行状态，及时解决各类技术故障，确保玩家能够流畅地进行游戏。同时，他耐心倾听玩家的反馈，积极协调沟通，是玩家与服主之间的重要桥梁。</p>
+      </div>
+      <div class="member">
+        <img src="user2.jpg" alt="管理员2头像">
+        <h3>管理员 - [死人来也]</h3>
+        <p>死人来也专注于维护游戏内的公平秩序，严格监督游戏行为，坚决打击各类作弊和违规现象。他以公正、果断的态度处理违规玩家，为所有玩家营造了一个绿色、健康的游戏氛围。他积极组织游戏活动，丰富玩家的游戏体验，深受玩家们的喜爱。</p>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
