@@ -1,0 +1,429 @@
+<html lang="zh-CN">
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Fun Play Server</title> 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpg') center center no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+   .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+   .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+   .logo-img {
+      width: 150px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+   .official-site {
+      color: white;
+      text-decoration: none;
+      border: 1px solid white;
+      padding: 5px 10px;
+      border-radius: 3px;
+      transition: background-color 0.3s ease;
+    }
+
+   .official-site:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+   .menu-container {
+      display: flex;
+      align-items: center;
+    }
+
+   .menu-icon {
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+   .nav-menu {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      /* 添加过渡效果 */
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+
+   .nav-menu.hidden {
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+
+   .nav-menu.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+   .nav-link {
+      color: white;
+      text-decoration: none;
+      margin-right: 0;
+      margin-bottom: 10px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+   .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+   .nav-link:hover {
+      color: #007BFF;
+    }
+
+   .nav-link:hover::after {
+      width: 100%;
+    }
+
+   .channel-info {
+      display: flex;
+      align-items: center;
+    }
+
+   .bilibili-logo {
+      color: white;
+      text-decoration: none;
+      background-color: #000;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin-left: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+   .bilibili-logo:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+   .hidden {
+      display: none;
+    }
+
+   .welcome-section {
+      text-align: center;
+      padding: 200px 0;
+    }
+
+    h1 {
+      font-size: 64px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+   .server-running-time {
+      margin-bottom: 30px;
+      font-size: 20px;
+      color: white;
+    }
+
+   .join-button {
+      display: inline-block;
+      padding: 15px 30px;
+      border: 2px solid white;
+      border-radius: 5px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+   .join-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+   .feature-section {
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    h2 {
+      font-size: 48px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      margin-bottom: 60px;
+    }
+
+   .feature-cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+   .feature-card {
+      width: 350px;
+      margin-bottom: 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+   .feature-icon {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 24px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+   .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    }
+
+   .testimonial-section {
+      text-align: center;
+      padding: 100px 0;
+    }
+
+   .testimonial-slider {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+   .testimonial {
+      width: 350px;
+      margin-bottom: 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+   .testimonial-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 30px;
+    }
+
+   .user-name {
+      color: white;
+      margin-top: 20px;
+    }
+
+   .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+   .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 30px;
+      border: 1px solid #888;
+      width: 60%;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      animation: modalFadeIn 1s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+   .close {
+      float: right;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+   .close:hover,
+   .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style> 
+  <script src="js/jq.js"></script> 
+ </head> 
+ <body id="v1"> 
+  <header id="v2" class="header"> 
+   <div id="v3" class="logo-container"> 
+    <img id="v4" src="logo.png" alt="Fun Play Server Logo" class="logo-img"> 
+    <a id="v5" href="#" class="official-site">官方网站</a> 
+   </div> 
+   <div id="v6" class="menu-container"> 
+    <span id="v7" class="menu-icon" onclick="toggleMenu()">☰</span> 
+    <nav id="menu" class="nav-menu hidden"> 
+     <a id="v8" href="index.html" class="nav-link">首页</a> 
+     <a id="v10" href="download.html" class="nav-link">资源下载</a> 
+     <a id="v11" href="lianxi.html" class="nav-link">联系我们</a> 
+    </nav> 
+    <div id="v12" class="channel-info"> 
+     <span id="v13">趣玩Play</span> 
+     <a id="v14" href="https://b23.tv/MBmkOQi/" target="_blank" class="bilibili-logo">bilibili</a> 
+    </div> 
+   </div> 
+  </header> 
+  <main id="v15"> 
+   <section id="v16" class="welcome-section"> 
+    <h1 id="v17">欢迎来到 Fun Play Server</h1> 
+    <div id="v18" class="server-running-time"> 
+     <span id="v19">网站已运行<span id="running-time">0天0小时0分0秒</span></span> 
+    </div> 
+    <a id="v20" href="join.html" class="join-button" onclick="showModal()">加入Fun Play →</a> 
+   </section> 
+   <section id="v21" class="feature-section"> 
+    <h2 id="v22">我们的特色</h2> 
+    <div id="v23" class="feature-cards"> 
+     <div id="v24" class="feature-card"> 
+      <img id="v25" src="资源.png" alt="特色图标1" class="feature-icon"> 
+      <h3 id="v26">丰富资源</h3> 
+      <p id="v27">海量游戏资源，满足你的各种需求。</p> 
+     </div> 
+     <div id="v28" class="feature-card"> 
+      <img id="v29" src="icon2.png" alt="特色图标2" class="feature-icon"> 
+      <h3 id="v30">活跃社区</h3> 
+      <p id="v31">和众多玩家一起交流互动，分享游戏乐趣。</p> 
+     </div> 
+     <div id="v32" class="feature-card"> 
+      <img id="v33" src="icon3.png" alt="特色图标3" class="feature-icon"> 
+      <h3 id="v34">稳定服务</h3> 
+      <p id="v35">专业运维团队，保障服务器稳定运行。</p> 
+     </div> 
+    </div> 
+   </section> 
+   <section id="v36" class="testimonial-section"> 
+    <h2 id="v37">玩家评价</h2> 
+    <div id="v38" class="testimonial-slider"> 
+     <div id="v39" class="testimonial"> 
+      <img id="v40" src="user1.jpg" alt="玩家头像1" class="testimonial-avatar"> 
+      <p id="v41">"在这里玩得超开心，社区氛围超棒！"</p> 
+      <span id="v42" class="user-name">- Nahidadog</span> 
+     </div> 
+     <div id="v43" class="testimonial"> 
+      <img id="v44" src="user2.jpg" alt="玩家头像2" class="testimonial-avatar"> 
+      <p id="v45">"资源很全，服务器也很稳定，强烈推荐！"</p> 
+      <span id="v46" class="user-name">- 死人来也</span> 
+     </div> 
+    </div> 
+   </section> 
+  </main> 
+  <div id="modal" class="modal hidden"> 
+   <div id="v47" class="modal-content"> 
+    <span id="v48" class="close" onclick="closeModal()">×</span> 
+    <h2 id="v49">加入QWServer</h2> 
+    <p id="v50">这里是一个充满奇幻与冒险的世界，赶快加入我们吧！</p> 
+   </div> 
+  </div> 
+  <script>
+    // 动态更新服务器运行时间
+    function updateRunningTime() {
+      const runningTimeElement = document.getElementById('running-time');
+      // 假设服务器启动时间，这里用一个示例时间，实际需根据服务器真实启动时间调整
+      const startDate = new Date('2025-03-15T00:00:00');
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      runningTimeElement.textContent = `${days}天${hours}小时${minutes}分${seconds}秒`;
+    }
+    setInterval(updateRunningTime, 1000);
+
+    // 切换菜单显示隐藏
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        menu.classList.add('active');
+      } else {
+        menu.classList.remove('active');
+        menu.classList.add('hidden');
+      }
+    }
+
+    // 显示模态框
+    function showModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.remove('hidden');
+    }
+
+    // 关闭模态框
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.add('hidden');
+    }
+  </script> Id('modal'); modal.classList.add('hidden'); }  
+ </body>
+</html>
